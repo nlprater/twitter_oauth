@@ -10,6 +10,7 @@
   <% if @access_token %>
     <div>
       <p>
+        <strong>token:</strong> <%= @access_token.params[:screen_name] %><br>
         <strong>token:</strong> <%= @access_token.token %><br>
         <strong>secret:</strong> <%= @access_token.secret %><br>
       </p>
@@ -20,5 +21,7 @@
   <% else %>
     <button><a href="/sign_in">Sign In with Twitter</a></button>
   <% end %>
-  
+  <% if session[:user_id] %>
+  <%= erb :_create_tweet %>
+  <% end %>
 </div>
