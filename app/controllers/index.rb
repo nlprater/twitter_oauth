@@ -27,11 +27,10 @@ get '/auth' do
   
 end
 
+get '/status/:job_id' do
+  job_is_complete(params[:job_id]).to_json
+end
 
 post '/tweet' do
-  tweet_text = params[:tweet_text]
-  twitter_user = Twitter::Client.new(
-  :oauth_token => current_user.oauth_token,
-  :oauth_token_secret => current_user.oauth_secret)
-  twitter_user.update(tweet_text)
+  current_user.tweet(params[:tweet_text])
 end
