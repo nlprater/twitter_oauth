@@ -32,5 +32,7 @@ get '/status/:job_id' do
 end
 
 post '/tweet' do
-  current_user.tweet(params[:tweet_text])
+  puts params
+  time_interval = params[:time_interval]
+  current_user.tweet(params[:tweet_text],time_interval)
 end
